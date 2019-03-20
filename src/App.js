@@ -9,6 +9,7 @@ import Navbar from './components/navbar'
 import Home from './components/home'
 import forgot from './components/forgotPassword'
 import resetPassword from './components/resetPassword'
+import ProductView from './components/productView/productview'
 
 
 class App extends Component {
@@ -83,6 +84,9 @@ class App extends Component {
         <Route
           exact path="/resetpwd"
           component={resetPassword} />
+        <Route
+          path="/ProductView"
+          component={ProductView} />
       </div>
     );
   }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from './navbar'
+import Product from './product/product'
+
 import axios from 'axios'
+import '../css/home.css'
 
 class Home extends Component {
   constructor() {
@@ -11,12 +14,12 @@ class Home extends Component {
       username: null
     }
     this.getUser = this.getUser.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillMount = this.componentWillMount.bind(this)
     this.updateUser = this.updateUser.bind(this)
   }
 
 
-  componentDidMount() {
+  componentWillMount() {
     this.getUser()
   }
 
@@ -54,8 +57,11 @@ class Home extends Component {
       <div>
              <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {this.state.loggedIn &&
-          <p className="join">Join the party, {this.state.username}!</p>
+          <p className="homediv">Join the party, {this.state.username}!</p>
         }
+        <div>
+          <Product/>
+        </div>
       </div>
 
     )

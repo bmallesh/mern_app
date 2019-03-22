@@ -14,7 +14,6 @@ constructor(){
         redirectTo: null
     }
     this.getProducts()
-    this.order=this.order.bind(this)
 }
 
   getProducts() {
@@ -31,8 +30,8 @@ constructor(){
   }
   
   order(value){
-    alert(value)
-    console.log(value)
+    var url='/productView?prd='+value
+    this.setState({redirectTo:url})
   }
 
     render(){
@@ -50,7 +49,7 @@ constructor(){
                 <CardImg top width="100%" height="300px" src={value.url} alt="Card image cap"/>
                 <CardFooter>
                   <p class='float-left'>{value.cost}</p>
-                  <button class='float-right btn btn-primary' onClick={this.order(value.name)}>Order</button>
+                  <button class='float-right btn btn-primary' onClick={()=>this.order(value._id)}>Order</button>
                 </CardFooter>
               </Card> 
                )

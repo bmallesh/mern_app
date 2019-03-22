@@ -6,6 +6,7 @@ const dbConnection = require('./database')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 const home = require("./routes/home")
+const productView = require('./routes/productView')
 const app = express()
 const PORT = 8080
 // Route requires
@@ -38,6 +39,7 @@ app.use(passport.session()) // calls the deserializeUser
 // Routes
 app.use('/', user)
 app.use('/home',home)
+app.use('/productView',productView)
 
 
 // Starting Server 

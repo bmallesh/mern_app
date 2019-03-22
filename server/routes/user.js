@@ -113,7 +113,7 @@ router.post('/app/api/login',
     },
     passport.authenticate('local'),
     (req, res) => {
-        console.log('logged in', req.user);
+        // console.log('logged in', req.user);
         var userInfo = {
             username: req.user.username
         };
@@ -124,8 +124,8 @@ router.post('/app/api/login',
 
 // user password reset
 router.post('/app/api/reset', function (req, res) {
-    console.log('routes/user.js, reset password req.body');
-    console.log(req.body)
+    // console.log('routes/user.js, reset password req.body');
+    // console.log(req.body)
     data = req.body
     var pwd = bcrypt.hashSync(data.newpassword, 10);
     console.log("pass" + pwd)

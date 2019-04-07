@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {Card, Button, CardHeader, CardFooter, CardBody,
     CardTitle, CardText, CardDeck,CardImg,CardColumns } from 'reactstrap';
-    import { Redirect } from 'react-router-dom'    
+    import { Spinner } from 'reactstrap';
+    import { Redirect,Link } from 'react-router-dom'    
 import axios from 'axios'    
 import './product.css'
 import Loder from '../loder/loder'
@@ -29,37 +30,43 @@ constructor(){
     })
   }
   
-  order(value){
-    var url='/productView?prd='+value
-    this.setState({redirectTo:url})
+  order(id,url){
+    localStorage.setItem("prd",id)
+    localStorage.setItem("url",url)
+    // var url='/productView'
+    // this.setState({redirectTo:url})
   }
 
     render(){
-      if (this.state.redirectTo) {
-        return <Redirect to={{ pathname: this.state.redirectTo }} />
-    } else {
-      return(
-        <div class='carddiv'>
-        <CardColumns>
-          {this.state.product.length != 0 ? ( 
-             this.state.product.map((value,index)=>{
+      if (this.state.product.length != 0) {
+        return (
+          <div class='carddiv'>
+          <CardColumns>
+          {this.state.product.map((value,index)=>{
                return(
-                <Card class='card'>
+              <div class='zoom'>
+                                <Card class='card'>
                 <CardHeader>{value.name}</CardHeader>
                 <CardImg top width="100%" height="300px" src={value.url} alt="Card image cap"/>
-                <CardFooter>
+                <CardFooter style={{paddingBbottom:"2.2rem"}}>
                   <p class='float-left'>{value.cost}</p>
-                  <button class='float-right btn btn-primary' onClick={()=>this.order(value._id)}>Order</button>
+                  <Link to="/productView" className="">
+                  <button class='float-right btn btn-primary' onClick={()=>this.order(value._id,value.url)}>Order</button>
+                  </Link>
                 </CardFooter>
               </Card> 
+              </div>
                )
-             })
-          ):(
-            <Loder/>
-          )}
+             })}
           </CardColumns>
         </div>
-    )
+        )
+    } else {
+      return(
+        <div>
+        <Loder />
+      </div>
+      )
     }
     }
 }

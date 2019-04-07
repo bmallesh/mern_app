@@ -90,8 +90,9 @@ class LoginForm extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <Container>
-                    <Navbar/>
+                <div>
+                    {/* <Navbar/> */}
+                    <Container>
                     <Row className="pt-5">
                         <Col><h4 className="pt-2 text-white">Sign in your account</h4></Col>
                     </Row>
@@ -140,6 +141,7 @@ class LoginForm extends Component {
                         <Col sm="12" md="4"></Col>
                     </Row>
                 </Container>
+                </div>
             )
         }
     }

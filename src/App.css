@@ -1,8 +1,4 @@
-/* .homelogo{padding-top: 0px!important; padding-bottom: 0px!important;}
-.currency-styles{font-size: 0.95rem!important;}
-.col-lg-2{padding-left:5px!important; padding-right:5px!important}
-.box{padding: 0.7rem!important;}
-.textright{text-align: right!important;} */
+
 .button{
   text-align: center;
   margin: 0 auto;
@@ -27,46 +23,5 @@
     background-position: 50% 100%;
     background-repeat: repeat;
     position: absolute;
-}
-.join{color:#fff;}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.navbar {
- 
-  margin-top: auto;
-  
-}
-#top-filler {
-  margin-bottom: auto;
-}
-
-#nav-container {
-  align-items: flex-end;
-}
-h4{
-  font-family: proxima-nova,helvetica neue,Helvetica,Arial,sans-serif;
-}
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 

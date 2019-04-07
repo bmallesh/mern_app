@@ -101,7 +101,7 @@ class forgot extends Component {
             }
             return (
                 <Container>
-                    <Navbar/>
+                    {/* <Navbar/> */}
                     <Row className="pt-5">
                         <Col><h4 className="pt-2 text-white">Forgot Your Password?</h4></Col>
                     </Row>

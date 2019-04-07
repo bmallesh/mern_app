@@ -1,0 +1,21 @@
+
+  @media (min-width: 992px){
+    .card-body-left{
+      flex: 0 0 50%;
+      max-width: 50%;
+      border-right: 1px solid rgba(0,0,0,.125);
+  }
+  }
+  figure {
+    background-repeat: no-repeat;
+  }
+  
+  figure:hover img {
+    opacity: 0;
+  }
+  
+  img {
+    display: block;
+    width: 100%;
+    pointer-events: none;
+  }

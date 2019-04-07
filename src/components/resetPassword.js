@@ -95,7 +95,7 @@ class resetPassword extends Component {
         } else {
             return (
                 <Container>
-                    <Navbar/>
+                    {/* <Navbar/> */}
                     <Row className="pt-5">
                         <Col><h4 className="pt-2 text-white">Reset Password</h4></Col>
                     </Row>

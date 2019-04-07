@@ -126,8 +126,9 @@ class Signup extends Component {
                 )
             }
 			return (
-				<Container>
-					<Navbar/>
+				<div>
+					{/* <Navbar/> */}
+					<Container>
 					<Row className="pt-5">
 						<Col><h4 className="pt-2 text-white">Sign up your account</h4></Col>
 					</Row>
@@ -205,6 +206,7 @@ class Signup extends Component {
 					<Col sm="12" md={{ size: 3, offset: 3 }}></Col>
 				</Row>
 			</Container>
+			</div>
 		)
 		}
 	}

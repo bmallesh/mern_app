@@ -21,13 +21,14 @@ class App extends Component {
     }
 
     this.getUser = this.getUser.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
+    // this.componentDidMount = this.componentDidMount.bind(this)
     this.updateUser = this.updateUser.bind(this)
-  }
-
-  componentDidMount() {
     this.getUser()
   }
+
+  // componentDidMount() {
+  //   this.getUser()
+  // }
 
   updateUser (userObject) {
     this.setState(userObject)
@@ -57,10 +58,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+        <Navbar updateUser={this.updateUser} userdata={this.state} />
         {this.state.loggedIn &&
           <p className="join">Join the party, {this.state.username}!</p>
-        } */}
+        }
         {/* Routes to different components */}
         <Route
           exact path="/"
@@ -85,8 +86,8 @@ class App extends Component {
           exact path="/resetpwd"
           component={resetPassword} />
         <Route
-          path="/ProductView"
-          component={ProductView} />
+          exact path="/ProductView"
+          component={ProductView} /> 
       </div>
     );
   }

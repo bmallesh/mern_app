@@ -17,16 +17,19 @@ class ProductView extends Component {
 			backgroundPosition: '0% 0%',
 			cartupdate: "not Updated",
 			quntity: '1kg',
-			cost:null
+			cost:null,
+			maincost:null,
+			disabled:false
 		}
 		// alert("constructor")
 		// alert(localStorage.getItem("prd"))
 		this.state.pid = localStorage.getItem("prd")
 		this.getProductDetails()
+		this.buttonDisable()
 		this.radioChange = this.radioChange.bind(this);
 	}
 	componentDidMount() {
-
+		// this.buttonDisable;
 	}
 	getProductDetails() {
 		// alert(this.state.uid)
@@ -36,7 +39,8 @@ class ProductView extends Component {
 			var data = res.data
 			this.setState({
 				productdata: data[0],
-				cost:data[0].cost
+				cost:data[0].cost,
+				maincost:data[0].cost
 			}, () => {
 				//alert(this.state.productdata)
 				//console.log(this.state.productdata)
@@ -62,7 +66,15 @@ class ProductView extends Component {
 		if (localStorage.getItem("cart")) {
 			cart = JSON.parse(localStorage.getItem("cart"));
 			console.log(cart)
-			cart.push(cartdt)
+			cart.forEach((element,index) => {
+				if(element._id===cartdt._id){
+					cart.splice(index,1,cartdt)
+				}else{
+					if(cart.length==index + 1){
+						cart.push(cartdt)
+					}
+				}
+			});
 			localStorage.setItem("cart", JSON.stringify(cart));
 			console.log(cart)
 
@@ -70,31 +82,50 @@ class ProductView extends Component {
 			cart = [cartdt]
 			localStorage.setItem("cart", JSON.stringify(cart))
 		}
+		this.setState({
+			disabled:true
+		})
 	}
 	radioChange(e) {
 		if(e.currentTarget.value=="1kg"){
-			var cost = this.state.productdata.cost;
+			var cost = this.state.maincost;
 			this.setState({
 				quntity: e.currentTarget.value,
-				cost:cost
+				cost:cost,
+				disabled:false
 			  });
 		}
 		if(e.currentTarget.value=="500 gm"){
-			var cost = this.state.productdata.cost/2;
+			var cost = this.state.maincost/2;
 			this.setState({
 				quntity: e.currentTarget.value,
-				cost:cost
+				cost:cost,
+				disabled:false
 			  });
 		}
 		if(e.currentTarget.value=="250 gm"){
-			var cost = this.state.productdata.cost/4;
+			var cost = this.state.maincost/4;
 			this.setState({
 				quntity: e.currentTarget.value,
-				cost:cost
+				cost:cost,
+				disabled:false
 			  });
 		}
-
 	  }
+	  //===============disabled============
+	  buttonDisable(){
+		if(localStorage.getItem("cart")){
+			var cart = JSON.parse(localStorage.getItem("cart"));
+			cart.forEach(element => {
+				if(element._id===this.state.pid){
+					this.state.disabled=true;
+					this.state.cost=element.cost;
+					this.state.quntity=element.quntity;
+				}
+			});
+		}
+	  }
+
 	render() {
 		if (this.state.productdata) {
 			return (
@@ -122,19 +153,19 @@ class ProductView extends Component {
 												<a href="#" class="btn btn-primary">Go somewhere</a> */}
 												<h5 class="card-title">Size</h5>
 												<div class="form-check">
-													<label class="form-check-label" for="radio1">
+													<label class="form-check-label">
 													<input type="radio" value="1kg" checked={this.state.quntity === "1kg"}
 													onChange={this.radioChange} /> 1Kg - {this.state.productdata.cost}
             										 </label>
 												</div>
 												<div class="form-check">
-													<label class="form-check-label" for="radio2">
+													<label class="form-check-label">
 													<input type="radio" value="500 gm" checked={this.state.quntity === "500 gm"}
 													onChange={this.radioChange} /> 500 gm - {this.state.productdata.cost/2}
             										 </label>
 												</div>
 												<div class="form-check">
-													<label class="form-check-label" for="radio3">
+													<label class="form-check-label">
 													<input type="radio" value="250 gm" checked={this.state.quntity === "250 gm"}
 													onChange={this.radioChange} /> 250 gm - {this.state.productdata.cost/4}
             										 </label>
@@ -144,7 +175,7 @@ class ProductView extends Component {
 									</div>
 									<div class="card-footer text-muted">
 									<p class='float-left'>{this.state.cost} - {this.state.quntity}</p>
-										<button class='float-right btn btn-lg btn-primary' onClick={() => { this.addToCart(this.state.productdata) }}>Add To Cart</button>
+										<button class='float-right btn btn-lg btn-primary'disabled={this.state.disabled} onClick={() => { this.addToCart(this.state.productdata) }}>Add To Cart</button>
 									</div>
 								</div>
 							</div>

@@ -54,7 +54,7 @@ class Navbar extends Component {
                     </div>
                     <div className="col-6" >
                     <section className="navbar-section float-right">
-                    <Link to="#" className="btn btn-link cartLinkStyles"style={{backgroundColor:"white",borderRadius:"49%"}}>
+                    <Link to="/cart" className="btn btn-link cartLinkStyles"style={{backgroundColor:"white",borderRadius:"49%"}}>
                                         <span className="">{appdata.cartdata}</span>
                                     </Link>
                         {loggedIn ? (

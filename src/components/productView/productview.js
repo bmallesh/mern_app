@@ -88,7 +88,7 @@ class ProductView extends Component {
 	}
 	radioChange(e) {
 		if(e.currentTarget.value=="1kg"){
-			var cost = this.state.maincost;
+			 cost = this.state.maincost;
 			this.setState({
 				quntity: e.currentTarget.value,
 				cost:cost,
@@ -155,19 +155,19 @@ class ProductView extends Component {
 												<div class="form-check">
 													<label class="form-check-label">
 													<input type="radio" value="1kg" checked={this.state.quntity === "1kg"}
-													onChange={this.radioChange} /> 1Kg - {this.state.productdata.cost}
+													onChange={this.radioChange} /> 1Kg - {this.state.maincost}
             										 </label>
 												</div>
 												<div class="form-check">
 													<label class="form-check-label">
 													<input type="radio" value="500 gm" checked={this.state.quntity === "500 gm"}
-													onChange={this.radioChange} /> 500 gm - {this.state.productdata.cost/2}
+													onChange={this.radioChange} /> 500 gm - {this.state.maincost/2}
             										 </label>
 												</div>
 												<div class="form-check">
 													<label class="form-check-label">
 													<input type="radio" value="250 gm" checked={this.state.quntity === "250 gm"}
-													onChange={this.radioChange} /> 250 gm - {this.state.productdata.cost/4}
+													onChange={this.radioChange} /> 250 gm - {this.state.maincost/4}
             										 </label>
 												</div>
 											</div>

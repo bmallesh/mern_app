@@ -10,6 +10,7 @@ import Home from './components/home'
 import forgot from './components/forgotPassword'
 import resetPassword from './components/resetPassword'
 import ProductView from './components/productView/productview'
+import Cart from './components/cart/cart'
 
 
 class App extends Component {
@@ -88,6 +89,9 @@ class App extends Component {
         <Route
           exact path="/ProductView"
           component={ProductView} /> 
+        <Route
+          exact path="/cart"
+          component={Cart} />
       </div>
     );
   }

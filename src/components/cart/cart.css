@@ -1,0 +1,16 @@
+.cartImage{
+    width: 6rem;
+    height: 6rem;
+}
+.iconTrash{
+    font-size:24px
+}
+tr{
+    color: white;
+}
+td{
+    vertical-align: middle;
+}
+th{
+    color: white;
+}

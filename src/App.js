@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 import { Button } from 'reactstrap';
+import {connect} from 'react-redux'
 // components
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
@@ -96,5 +97,20 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = (state)=>{
+  return{
+    cartreducer:state.cartreducer
+  }
+}
 
-export default App;
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    addCart:()=>{
+      dispatch({
+        type:"ADD"
+      });
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);
+// export default App;

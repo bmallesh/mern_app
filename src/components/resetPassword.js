@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect} from 'react-router-dom'
 import axios from 'axios'
-import Navbar from './navbar'
+// import Navbar from './navbar'
 
 import {
      Container, Row, Col, FormGroup, Input

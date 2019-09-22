@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Navbar from './navbar'
+// import Navbar from './navbar'
 import Product from './product/product'
 
-import axios from 'axios'
+// import axios from 'axios'
 import '../css/home.css'
 
 class Home extends Component {

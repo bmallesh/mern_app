@@ -8,7 +8,9 @@ const userSchema = new Schema({
 	firstname: { type: String, unique: false, required: false },
 	lastname: { type: String, unique: false, required: false },
 	username: { type: String, unique: false, required: false },
-	password: { type: String, unique: false, required: false }
+	password: { type: String, unique: false, required: false },
+	mobileNo:{type:String, unique: false, required: false},
+	gender:{type:String, unique: false, required: false}
 
 })
 

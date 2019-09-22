@@ -13,7 +13,9 @@
   figure:hover img {
     opacity: 0;
   }
-  
+  .productViewcard{
+    background-color: #0c1e42;
+  }
   img {
     display: block;
     width: 100%;

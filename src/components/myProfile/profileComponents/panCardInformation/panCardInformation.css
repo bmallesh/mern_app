@@ -1,0 +1,28 @@
+.pan-card-info{
+    text-align: -webkit-auto;
+    color: #212121!important;
+}
+.form-control{
+    font-size: .8rem!important;
+    /* height: calc(2.25rem + 7px)!important; */
+}
+
+.btn-upload{
+    height: 2.2rem!important;
+    font-size: .8rem!important;
+    background-color: #5755d9!important;
+    color: #fff!important;
+}
+.checkbox-div{
+    display:  -webkit-box;
+    padding-top: .5rem;
+}
+.checkbox-p{
+    padding-left: .5rem;
+    font-size: medium;
+}
+.info-span{
+    font-size: 18px!important;
+    font-weight: 600!important;
+    padding-right: 24px!important;
+}

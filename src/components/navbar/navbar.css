@@ -1,0 +1,36 @@
+.dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+      pointer-events: none;
+  }
+  .border-bottom{
+    border-bottom: 2px solid #f0f0f0!important;
+  }
+  .dropdown-menu-custum{
+      border:none!important;
+    background-color: #fff!important;
+    color: #212121!important;
+    border-radius: 2px!important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08)!important;
+    font-size: initial!important;
+  }
+  .dropdown-menu-custum:hover{
+      color: #5755d9!important;
+  }
+  a:visited {
+    color: #212121!important;
+}
+a:visited:hover {
+    color: #5755d9!important;
+}
+.icon-styles{
+    color: #5755d9;
+    margin-right: 10px;
+}
+.user-name-span{
+  padding-left: .8rem;
+  padding-right: .8rem;
+}

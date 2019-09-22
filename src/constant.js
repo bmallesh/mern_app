@@ -1,5 +1,6 @@
 var appdata={
     companyName:"Myapp",
+    isLogined:false,
     get url(){
         return localStorage.getItem("url")
     },

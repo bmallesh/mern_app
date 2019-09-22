@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-
+import {Link } from 'react-router-dom'  
 import appdata from '../../constant'
 import './cart.css'
+
+import {connect} from 'react-redux'
+import { SUB } from '../../actions/cartActions'
 
 class Cart extends Component {
     constructor() {
@@ -12,21 +15,30 @@ class Cart extends Component {
         }
     }
     removeitem(id) {
+        this.props.RemoveCart()
         appdata.removeitem(id)
         this.setState({
             data: appdata.cart
-        })
+        },()=>{this.totalCast()})
+        
+    }
+    componentWillMount(){
+        this.totalCast()
     }
 
     totalCast(){
-        var total="0";
+        var total=0;
         this.state.data.forEach(element => {
             total = total + element.cost;
         });
-        alert(total)
+        // alert(total)
         this.setState({
             totalcost:total
         })
+    }
+
+    placeToOrder(){
+        alert(this.props.user.name)
     }
 
 
@@ -48,11 +60,11 @@ class Cart extends Component {
             // })}
             // </tbody>
             // </table>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                    <table class="table table-hover  mt-4">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-md-1 col-lg-3"></div>
+                    <div className="col-md-10 col-lg-6">
+                    <table className="table table-hover  mt-4">
                     <thead>
                         <tr>
                             <td>My Cart ( {this.state.data.length})</td>
@@ -65,38 +77,68 @@ class Cart extends Component {
                     <tbody>
                      {this.state.data.map((item,i)=>{
                          return(
-                            <tr class="tablerow">
-                            <td class="td_pro max-width" style={{verticalAlign:"middle"}}>
-                            <img src={item.url} class="img-thumbnail"style={{width:"100%", height:"200px"}} alt="Cinque Terre" />
+                            <tr className="tablerow" key={i}>
+                            <td className="td_pro max-width" style={{verticalAlign:"middle"}}>
+                            <img src={item.url} className="img-thumbnail"style={{width:"100%", height:"200px"}} alt="Cinque Terre" />
                             </td>
-                            <td class="topright1 td_pro" style={{verticalAlign:"middle"}}>{item.name}</td>
-                            <td class="td_pro" style={{verticalAlign:"middle"}}>{item.cost}</td>
+                            <td className="topright1 td_pro" style={{verticalAlign:"middle"}}>{item.name}</td>
+                            <td className="td_pro" style={{verticalAlign:"middle"}}>{item.cost}</td>
                             <td style={{verticalAlign:"middle"}}>{item.quntity}</td>
-                            <td class="topright td_pro" style={{verticalAlign:"middle"}}><i class='fas fa-trash-alt iconTrash'onClick={()=>{this.removeitem(i)}}></i></td>
+                            <td className="topright td_pro" style={{verticalAlign:"middle"}}><i className='fas fa-trash-alt iconTrash'onClick={()=>{this.removeitem(i)}}></i></td>
                         </tr>
-                         )})}
+                         )})}                         
                     </tbody>
                 </table>
-                <table class="table">
-                    <tbody>
-                        <tr class="tablerow3">
-                            <td>Price ({this.state.data.length} items)</td>
-                            <td>{this.state.totalcost}</td>
-                        </tr>
-                        <tr class="tablerow3">
-                            <td>Delivery Charges</td>
-                            <td></td>
-                        </tr>
-                        <tr class="tablerow3">
-                            <td>Amount Payable</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                {this.state.data.length==0?(
+                                 <div>Empt Cart</div>):(
+                                    <div>
+                                    <table className="table table-price">
+                                    <tbody>
+                                        <tr className="tablerow3">
+                                            <td>Price ({this.state.data.length} items)</td>
+                                            <td>{this.state.totalcost}</td>
+                                        </tr>
+                                        <tr className="tablerow3">
+                                            <td>Delivery Charges</td>
+                                            <td className='deliveryCharge'>FREE</td>
+                                        </tr>
+                                        <tr className="tablerow3">
+                                            <td>Amount Payable</td>
+                                            <td>{this.state.totalcost}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div className="place-order-div">
+                                <Link to="/" className="">
+                                    <button type='button' className='btn btn-continu-shopping'>&#x227A;&#x227A; Continu SHopping</button>
+                                </Link>
+                                <Link to="/" className="">
+                                <button type='button' className='btn btn-order-place' onClick={()=>this.placeToOrder()}>Place Order</button>
+                                </Link>
+                                </div>
+                                    </div>
+                                 )}
+
                     </div>
                 </div>
             </div>
         )
     }
 }
-export default Cart;
+
+const mapStateToProps =(state) =>{
+    return{
+      user: state.user,
+      cartItem: state.cartItem
+    }
+  }
+  const mapDispatchToProps =(dispatch) =>{
+    return{
+      RemoveCart:()=>{
+        dispatch(SUB())
+      }
+    }
+  }
+  
+  export default connect(mapStateToProps,mapDispatchToProps)(Cart)
+// export default Cart;

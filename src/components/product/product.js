@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import {Card, Button, CardHeader, CardFooter, CardBody,
-    CardTitle, CardText, CardDeck,CardImg,CardColumns } from 'reactstrap';
-    import { Spinner } from 'reactstrap';
-    import { Redirect,Link } from 'react-router-dom'    
+import {Card, CardHeader, CardFooter,CardImg,CardColumns } from 'reactstrap';
+    // import { Spinner } from 'reactstrap';
+    import {Link } from 'react-router-dom'    
 import axios from 'axios'    
 import './product.css'
 import Loder from '../loder/loder'
@@ -14,9 +13,11 @@ constructor(){
         product:'',
         redirectTo: null
     }
-    this.getProducts()
-}
 
+}
+componentWillMount(){
+  this.getProducts()
+}
   getProducts() {
      axios.get('/home/getdata').then(response => {
       console.log('Get user response: ')
@@ -40,18 +41,22 @@ constructor(){
     render(){
       if (this.state.product.length != 0) {
         return (
-          <div class='carddiv'>
-          <CardColumns>
+          <div className='carddiv'>
+            <div className=''>
+            <div className='row'>
+              <div className='col-lg-2'></div>
+              <div className='col-md-12 col-lg-8'>
+              <CardColumns className='ml-2 mr-2'>
           {this.state.product.map((value,index)=>{
                return(
-              <div class='zoom'>
-                                <Card class='card'>
+              <div className='zoom' key={value.id}>
+                <Card className='card'>
                 <CardHeader>{value.name}</CardHeader>
-                <CardImg top width="100%" height="300px" src={value.url} alt="Card image cap"/>
+                <CardImg top width="100%" height="280px" src={value.url} alt="Card image cap"/>
                 <CardFooter style={{paddingBbottom:"2.2rem"}}>
-                  <p class='float-left'>{value.cost}</p>
+                  <p className='float-left'>{value.cost}</p>
                   <Link to="/productView" className="">
-                  <button class='float-right btn btn-primary' onClick={()=>this.order(value._id,value.url)}>Order</button>
+                  <button className='float-right btn btn-primary' onClick={()=>this.order(value._id,value.url)}>Order</button>
                   </Link>
                 </CardFooter>
               </Card> 
@@ -59,6 +64,9 @@ constructor(){
                )
              })}
           </CardColumns>
+              </div>
+            </div>
+            </div>
         </div>
         )
     } else {

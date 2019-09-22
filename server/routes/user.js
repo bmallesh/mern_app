@@ -71,7 +71,9 @@ router.post('/app/api/register', (req, res) => {
                 firstname: firstname,
                 lastname: lastname,
                 username: username,
-                password: password
+                password: password,
+                mobileNo: "",
+                gender: ""
             })
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err)

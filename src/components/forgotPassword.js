@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Container, Row, Col, FormGroup, Input, Alert } from 'reactstrap';
 import axios from 'axios'
-import Navbar from './navbar'
+// import Navbar from './navbar'
 
 
 class forgot extends Component {

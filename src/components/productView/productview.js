@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { Card, CardHeader, CardFooter, CardBody, CardText, CardImg } from 'reactstrap';
+// import { Card, CardHeader, CardFooter, CardBody, CardText, CardImg } from 'reactstrap';
 import axios from 'axios'
 import './productView.css'
 import appdata from '../../constant'
 
-import Navbar from '../navbar'
+import {connect} from 'react-redux'
+import { ADD } from '../../actions/cartActions'
+
+// import Navbar from '../navbar'
 import Loder from '../loder/loder'
 
 class ProductView extends Component {
@@ -32,10 +35,10 @@ class ProductView extends Component {
 		// this.buttonDisable;
 	}
 	getProductDetails() {
-		// alert(this.state.uid)
+		//  alert(this.state.pid)
 		axios.post('productView/productDetails', { _id: this.state.pid }).then(res => {
 			//alert(res.data)
-			//console.log(res.data)
+			console.log(res.data)
 			var data = res.data
 			this.setState({
 				productdata: data[0],
@@ -59,6 +62,7 @@ class ProductView extends Component {
 	}
 	//================cart=======================
 	addToCart(cartData) {
+		
 		var cartdt=cartData;
 		var cart
 		cartdt.quntity=this.state.quntity;
@@ -67,11 +71,12 @@ class ProductView extends Component {
 			cart = JSON.parse(localStorage.getItem("cart"));
 			console.log(cart)
 			cart.forEach((element,index) => {
-				if(element._id===cartdt._id){
+				if(element._id==cartdt._id){
 					cart.splice(index,1,cartdt)
 				}else{
 					if(cart.length==index + 1){
 						cart.push(cartdt)
+						this.props.addCart()
 					}
 				}
 			});
@@ -79,6 +84,7 @@ class ProductView extends Component {
 			console.log(cart)
 
 		} else {
+			this.props.addCart()
 			cart = [cartdt]
 			localStorage.setItem("cart", JSON.stringify(cart))
 		}
@@ -131,41 +137,41 @@ class ProductView extends Component {
 			return (
 				<div>
 					{/* <Navbar /> */}
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-sm-0 col-lg-2"></div>
-							<div class="col-sm-12 col-lg-8">
-								<div class="card text-center mt-2">
-									<div class="card-header" style={{ paddingBottom: ".8rem" }}>
+					<div className="container-fluid">
+						<div className="row productViewcard">
+							<div className="col-sm-0 col-lg-3"></div>
+							<div className="col-sm-12 col-lg-6">
+								<div className="card text-center mt-2">
+									<div className="card-header" style={{ paddingBottom: ".8rem" }}>
 										{this.state.productdata.name}
 									</div>
-									<div class="card-body" style={{ padding: '0' }}>
-										<div class="row">
-											<div class="col-sm-12 col-lg-6 card-body-left " style={{ padding: "1rem" }}>
+									<div className="card-body" style={{ padding: '0' }}>
+										<div className="row">
+											<div className="col-sm-12 col-lg-6 card-body-left " style={{ padding: "1rem" }}>
 												<figure onMouseMove={this.handleMouseMove} style={this.state}>
 													<img src={appdata.url} />
 												</figure>
-												{/* <img src={this.state.productdata.url} class="img-thumbnail" alt="Cinque Terre"/> */}
+												{/* <img src={this.state.productdata.url} className="img-thumbnail" alt="Cinque Terre"/> */}
 											</div>
-											<div class="col-sm-12 col-lg-6" style={{ padding: "1rem" }}>
-												{/* <h5 class="card-title">{this.state.productdata.name}</h5>
-												<p class="card-text">{this.state.productdata.description}</p>
-												<a href="#" class="btn btn-primary">Go somewhere</a> */}
-												<h5 class="card-title">Size</h5>
-												<div class="form-check">
-													<label class="form-check-label">
+											<div className="col-sm-12 col-lg-6" style={{ padding: "1rem" }}>
+												{/* <h5 className="card-title">{this.state.productdata.name}</h5>
+												<p className="card-text">{this.state.productdata.description}</p>
+												<a href="#" className="btn btn-primary">Go somewhere</a> */}
+												<h5 className="card-title">Size</h5>
+												<div className="form-check">
+													<label className="form-check-label">
 													<input type="radio" value="1kg" checked={this.state.quntity === "1kg"}
 													onChange={this.radioChange} /> 1Kg - {this.state.maincost}
             										 </label>
 												</div>
-												<div class="form-check">
-													<label class="form-check-label">
+												<div className="form-check">
+													<label className="form-check-label">
 													<input type="radio" value="500 gm" checked={this.state.quntity === "500 gm"}
 													onChange={this.radioChange} /> 500 gm - {this.state.maincost/2}
             										 </label>
 												</div>
-												<div class="form-check">
-													<label class="form-check-label">
+												<div className="form-check">
+													<label className="form-check-label">
 													<input type="radio" value="250 gm" checked={this.state.quntity === "250 gm"}
 													onChange={this.radioChange} /> 250 gm - {this.state.maincost/4}
             										 </label>
@@ -173,13 +179,13 @@ class ProductView extends Component {
 											</div>
 										</div>
 									</div>
-									<div class="card-footer text-muted">
-									<p class='float-left'>{this.state.cost} - {this.state.quntity}</p>
-										<button class='float-right btn btn-lg btn-primary'disabled={this.state.disabled} onClick={() => { this.addToCart(this.state.productdata) }}>Add To Cart</button>
+									<div className="card-footer text-muted">
+									<p className='float-left'>{this.state.cost} - {this.state.quntity}</p>
+										<button className='float-right btn btn-lg btn-primary'disabled={this.state.disabled} onClick={() => { this.addToCart(this.state.productdata) }}>Add To Cart</button>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-0 col-lg-2"></div>
+							<div className="col-sm-0 col-lg-2"></div>
 						</div>
 					</div>
 				</div>
@@ -194,4 +200,20 @@ class ProductView extends Component {
 		}
 	}
 }
-export default ProductView
+
+const mapStateToProps =(state) =>{
+    return{
+      user: state.user,
+      cartItem: state.cartItem
+    }
+  }
+  const mapDispatchToProps =(dispatch) =>{
+    return{
+      addCart:()=>{
+        dispatch(ADD())
+      }
+    }
+  }
+  
+  export default connect(mapStateToProps,mapDispatchToProps)(ProductView)
+// export default ProductView

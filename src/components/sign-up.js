@@ -4,7 +4,7 @@ import axios from 'axios'
 import {
 	 Container, Row, Col, FormGroup, Input,Alert
 } from 'reactstrap';
-import Navbar from './navbar'
+// import Navbar from './navbar'
 
 class Signup extends Component {
 	constructor() {

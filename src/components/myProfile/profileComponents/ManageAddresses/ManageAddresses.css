@@ -1,0 +1,47 @@
+.ManageAddresses{
+    text-align: -webkit-auto;
+    color: #212121!important;
+}
+.info-span{
+    font-size: 18px!important;
+    font-weight: 500!important;
+    padding-right: 24px!important;
+}
+.add-new-address{
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 2px;
+    margin-bottom: 30px;
+
+}
+.padding-add-address{
+    padding: .7rem;
+    font-weight: 500!important;
+    color: #5755d9!important;
+    cursor: pointer;
+}
+.plus-add-span{
+    padding-right: .5rem;
+    
+}
+.input-name{
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+    border-radius: 2px;
+    padding: 20px 16px 0 13px;
+    box-shadow: none;
+}
+.form-control{
+    font-size: .8rem!important;
+}
+.btn-save{
+    height: 2.2rem!important;
+    font-size: .8rem!important;
+    background-color: #5755d9!important;
+    color: #fff!important;
+}
+.cancel{
+    padding: 10px;
+}

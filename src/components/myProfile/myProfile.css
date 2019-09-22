@@ -1,0 +1,86 @@
+.profile-div{
+    background-color: #f1f3f6;
+    min-height: 100%
+}
+.container-div{
+    padding-top: 16px;
+}
+.profile-subdiv{
+    background-color: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+}
+.profile-subdiv2{
+    padding-left: 16px;
+}
+.user-profile{
+    display: flex;
+}
+.user-profile1{
+    margin-top: .7rem;
+}
+.icon-user-div{
+    text-align: left;
+    padding-left: .7rem;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    padding-right: .6rem;
+}
+.icon-user{
+    color: #5755d9;
+    font-size: 2rem;
+}
+.user-name-div{
+    padding: .6rem;
+    color: #212121;
+}
+.user-name{
+    font-weight: 500;
+    font-size: 16px;
+}
+.user-hello{
+    font-size: 12px;
+}
+.icon-styles{
+    color: #5755d9;
+    margin-right: 10px;
+}
+.myOrders-div{
+    padding: 20px 12px 5px 24px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+.orders-span{
+    width: calc(100% - 26px);
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+    cursor: pointer;
+}
+.border-div{
+    border-bottom: 1px solid #f0f0f0;
+}
+.fa-chevron-right{
+    color: #878787!important;
+    float: right;
+    cursor: pointer;
+}
+.hover-color:hover{
+    color: #5755d9;
+}
+.account-setting{
+    font-size: 14px;
+    padding: 12px 0px 12px 66px;
+    cursor: pointer;
+    text-align: left;
+  }
+/* .hover-account-settings:hover{
+    color: #5755d9;
+    background-color: aliceblue;
+} */
+
+.Nav-Link.active, .Nav-Link:active, .Nav-Link:focus, .Nav-Link:hover {
+    color: #5755d9!important;
+    text-decoration: none!important;
+}

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect,Link  } from 'react-router-dom'
-import {
- Button, Container, Row, Col, FormGroup, Label, Input
+import { Container, Row, Col, FormGroup, Input
 } from 'reactstrap';
 import axios from 'axios'
-import Navbar from './navbar'
+// import Navbar from './navbar'
 class LoginForm extends Component {
     constructor() {
         super()

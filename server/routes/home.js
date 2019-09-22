@@ -1,6 +1,8 @@
 exp=require("express")
 mj=require("mongojs")
-conn=mj("mongodb://myapp:Anusha450@ds249035.mlab.com:49035/myapp")
+const appdata=require("../constant");
+
+conn=mj(appdata.uri)
 
 rout=exp.Router()
 
@@ -13,5 +15,14 @@ rout.get('/getdata',function(req,res){
     // res.send("complited")
 })
 
+rout.post('/getUserInfo',function(req,res){
+    dt=req.body
+    console.log("getdata")
+    conn.users.find({username:dt.username},{password:0},function(err,result){
+        res.send(result)
+        console.log(result)
+    });
+    // res.send("complited")
+})
 
 module.exports=rout;
